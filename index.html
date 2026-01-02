@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Austin Mandlokuwa | Contemporary Artist</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'stone-50': '#fafaf9',
+                        'stone-100': '#f5f5f4',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.8s ease-out forwards',
+                        'slide-up': 'slideUp 0.8s ease-out forwards',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        slideUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        /* Default state is hidden */
+        .section-content { display: none; opacity: 0; transition: opacity 0.4s ease-in-out; }
+        
+        /* Active state handles opacity, but display is handled by JS inline styles */
+        .section-content.active { opacity: 1; }
+        
+        body { overflow-x: hidden; }
+    </style>
+</head>
+<body class="bg-white text-neutral-900 antialiased selection:bg-neutral-900 selection:text-white relative">
+
+    <nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-300 py-4 lg:py-6 bg-transparent">
+        <div class="container mx-auto px-6 flex justify-between items-center w-full">
+            
+            <a href="#" onclick="showSection('home')" class="font-serif text-lg md:text-2xl tracking-widest uppercase z-[60] relative text-neutral-900 hover:text-neutral-600 transition-colors truncate">
+                Austin Mandlokuwa
+            </a>
+
+            <div class="hidden lg:flex space-x-12">
+                <button onclick="showSection('gallery')" class="nav-link text-xs tracking-[0.2em] uppercase hover:text-neutral-500 transition-colors">Works</button>
+                <button onclick="showSection('about')" class="nav-link text-xs tracking-[0.2em] uppercase hover:text-neutral-500 transition-colors">About</button>
+                <button onclick="showSection('contact')" class="nav-link text-xs tracking-[0.2em] uppercase hover:text-neutral-500 transition-colors">Contact</button>
+            </div>
+
+            <button onclick="toggleMobileMenu()" class="lg:hidden z-[60] relative p-2 -mr-2 text-neutral-900 focus:outline-none">
+                <i class="ph ph-list text-2xl" id="menuIcon"></i>
+            </button>
+        </div>
+
+        <div id="mobileMenu" class="fixed inset-0 bg-white z-50 flex flex-col items-center justify-center space-y-8 opacity-0 pointer-events-none transition-opacity duration-300">
+            <button onclick="showSection('gallery'); toggleMobileMenu()" class="text-3xl font-serif hover:text-neutral-500 transition-colors">Works</button>
+            <button onclick="showSection('about'); toggleMobileMenu()" class="text-3xl font-serif hover:text-neutral-500 transition-colors">About</button>
+            <button onclick="showSection('contact'); toggleMobileMenu()" class="text-3xl font-serif hover:text-neutral-500 transition-colors">Contact</button>
+        </div>
+    </nav>
+
+    <main>
+
+        <div id="home" class="section-content active">
+            
+            <header class="relative min-h-screen flex items-center justify-center overflow-hidden">
+                <div class="absolute inset-0 z-0">
+                    <img src="images/hero.jpg" 
+                         alt="Studio Background" 
+                         class="w-full h-full object-cover opacity-90 grayscale-[20%]">
+                    <div class="absolute inset-0 bg-white/10"></div>
+                </div>
+                
+                <div class="relative z-10 text-center px-4 md:px-6 max-w-5xl animate-slide-up pt-16">
+                    <h1 class="text-4xl sm:text-5xl md:text-7xl font-serif text-neutral-900 mb-6 tracking-tight leading-[1.1]">
+                        Visualizing the Soul<br>of the Highveld
+                    </h1>
+                    <p class="text-base sm:text-lg md:text-xl text-neutral-800 mb-8 md:mb-10 font-light max-w-xl mx-auto leading-relaxed bg-white/40 md:bg-transparent backdrop-blur-sm md:backdrop-blur-none p-4 md:p-0 rounded-lg md:rounded-none">
+                        Exploring memory, urbanization, and African identity through oil and charcoal.
+                    </p>
+                    <button onclick="showSection('gallery')" class="px-8 py-3 border border-neutral-900 bg-white/80 md:bg-transparent text-neutral-900 hover:bg-neutral-900 hover:text-white transition-all duration-300 uppercase tracking-[0.2em] text-xs font-medium backdrop-blur-sm">
+                        View Collection
+                    </button>
+                </div>
+                
+                <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce opacity-60 hidden md:block cursor-pointer" onclick="document.getElementById('recent-works').scrollIntoView()">
+                    <i class="ph ph-arrow-down text-2xl text-neutral-900"></i>
+                </div>
+            </header>
+
+            <section id="recent-works" class="py-24 px-6 bg-white border-t border-neutral-100">
+                <div class="container mx-auto max-w-7xl">
+                    <div class="flex flex-col md:flex-row justify-between items-end mb-12">
+                        <h2 class="text-3xl md:text-4xl font-serif text-neutral-900">Recent Additions</h2>
+                        <button onclick="showSection('gallery')" class="text-xs uppercase tracking-widest border-b border-neutral-300 hover:border-black pb-1 mt-4 md:mt-0 transition-colors">
+                            Explore All Works
+                        </button>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <div class="group cursor-pointer" onclick="showSection('gallery')">
+                            <div class="overflow-hidden mb-4 bg-stone-100 aspect-[4/5]">
+                                <img src="images/art0.jpg" alt="Painting">
+                            </div>
+                            <h3 class="text-lg font-serif">Dust & Gold I</h3>
+                            <p class="text-xs text-neutral-400 uppercase mt-1">Oil on Canvas</p>
+                        </div>
+                        <div class="group cursor-pointer" onclick="showSection('gallery')">
+                            <div class="overflow-hidden mb-4 bg-stone-100 aspect-[4/5]">
+                                <img src="images/art1.jpg" alt="Sculpture">
+                            </div>
+                            <h3 class="text-lg font-serif">Structure of Silence</h3>
+                            <p class="text-xs text-neutral-400 uppercase mt-1">Bronze</p>
+                        </div>
+                        <div class="group cursor-pointer" onclick="showSection('gallery')">
+                            <div class="overflow-hidden mb-4 bg-stone-100 aspect-[4/5]">
+                                <img src="images/art2.jpg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="Charcoal">
+                            </div>
+                            <h3 class="text-lg font-serif">The Wait</h3>
+                            <p class="text-xs text-neutral-400 uppercase mt-1">Charcoal on Paper</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="philosophy" class="py-24 px-6 bg-stone-50">
+                <div class="container mx-auto max-w-4xl text-center">
+                    <i class="ph ph-quotes text-4xl text-neutral-300 mb-6"></i>
+                    <p class="text-xl md:text-3xl font-serif italic text-neutral-800 mb-8 leading-relaxed">
+                        "My work is a dialogue between the rigid structures of the city and the organic fluidity of memory. I paint not what is seen, but what is felt in the silence between noises."
+                    </p>
+                    <div class="w-16 h-px bg-neutral-300 mx-auto mb-8"></div>
+                    <p class="text-neutral-500 font-light mb-8 max-w-2xl mx-auto">
+                        Working from his studio in the Cape Town Precinct, Austin Mandlokuwa uses locally sourced materials to investigate the changing landscape of post-apartheid South Africa.
+                    </p>
+                    <button onclick="showSection('about')" class="text-xs uppercase tracking-widest bg-neutral-900 text-white px-8 py-3 hover:bg-neutral-700 transition-colors">
+                        Read Biography
+                    </button>
+                </div>
+            </section>
+        </div>
+
+        <div id="gallery" class="section-content pt-28 md:pt-32 pb-20 px-6 min-h-screen container mx-auto">
+            <div class="flex flex-col lg:flex-row justify-between items-start lg:items-end mb-12 border-b border-neutral-200 pb-6 animate-fade-in">
+                <h2 class="text-3xl md:text-4xl font-serif text-neutral-900 mb-4 lg:mb-0">Selected Works</h2>
+                <div class="flex space-x-6 w-full lg:w-auto overflow-x-auto pb-2 lg:pb-0 no-scrollbar" id="filterContainer">
+                    <button onclick="filterGallery('All', this)" class="filter-btn text-xs uppercase tracking-widest font-bold text-neutral-900 flex-shrink-0">All</button>
+                    <button onclick="filterGallery('Painting', this)" class="filter-btn text-xs uppercase tracking-widest text-neutral-400 hover:text-neutral-600 flex-shrink-0">Painting</button>
+                    <button onclick="filterGallery('Sculpture', this)" class="filter-btn text-xs uppercase tracking-widest text-neutral-400 hover:text-neutral-600 flex-shrink-0">Sculpture</button>
+                    <button onclick="filterGallery('Charcoal', this)" class="filter-btn text-xs uppercase tracking-widest text-neutral-400 hover:text-neutral-600 flex-shrink-0">Charcoal</button>
+                </div>
+            </div>
+            <div id="artworkGrid" class="columns-1 md:columns-2 lg:columns-3 gap-8 space-y-8 animate-fade-in pb-12 w-full"></div>
+        </div>
+
+        <div id="about" class="section-content pt-28 md:pt-32 pb-20 px-6 min-h-screen container mx-auto">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 animate-fade-in">
+                <div class="order-2 lg:order-1">
+                    <img src="images/hero1.jpg" class="w-full h-auto grayscale contrast-125 object-cover max-h-[60vh] lg:max-h-[80vh]">
+                </div>
+                <div class="flex flex-col justify-center order-1 lg:order-2">
+                    <h2 class="text-4xl md:text-5xl font-serif mb-6 md:mb-8 text-neutral-900">Biography</h2>
+                    <p class="text-base md:text-lg text-neutral-600 leading-relaxed mb-6 font-light">
+                        Born in Gweru and trained at the Michaelis School of Fine Art, Thabo Mokoena has established himself as a leading voice in contemporary South African art. His work transcends mere representation, diving deep into the psycho-geography of Johannesburg.
+                    </p>
+                    <div class="space-y-6 mt-8">
+                        <h3 class="text-xs uppercase tracking-widest font-bold border-b border-neutral-200 pb-4">Selected Exhibitions</h3>
+                        <div class="flex flex-col sm:flex-row sm:justify-between group cursor-default">
+                            <span class="text-neutral-900 font-serif text-lg mb-1 sm:mb-0">Future Archaeologies</span>
+                            <span class="text-neutral-500 text-sm sm:text-right">Zeitz MOCAA, Cape Town — 2025</span>
+                        </div>
+                        <div class="flex flex-col sm:flex-row sm:justify-between group cursor-default">
+                            <span class="text-neutral-900 font-serif text-lg mb-1 sm:mb-0">Dust to Dust</span>
+                            <span class="text-neutral-500 text-sm sm:text-right">Stevenson Gallery, JHB — 2024</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="contact" class="section-content pt-28 md:pt-32 pb-20 px-6 min-h-screen container mx-auto flex items-center">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 w-full max-w-6xl mx-auto animate-slide-up">
+                <div>
+                    <h2 class="text-4xl md:text-5xl font-serif mb-6 md:mb-8 text-neutral-900">Inquiries</h2>
+                    <p class="text-lg md:text-xl text-neutral-600 font-light mb-10 md:mb-12">
+                        For sales inquiries, studio visits, or press collaborations, please use the form or contact the studio directly.
+                    </p>
+                    <div class="space-y-6 text-neutral-800 font-light">
+                        <div class="flex items-center space-x-4">
+                            <i class="ph ph-envelope-simple text-xl text-neutral-400"></i>
+                            <span class="text-sm md:text-base break-all">studio@thabomokoena.art</span>
+                        </div>
+                        <div class="flex items-center space-x-4">
+                            <i class="ph ph-map-pin text-xl text-neutral-400"></i>
+                            <span class="text-sm md:text-base">Rosebank, Johannesburg</span>
+                        </div>
+                    </div>
+                </div>
+                <form class="space-y-6 bg-white lg:bg-transparent p-6 lg:p-0 rounded-lg lg:rounded-none shadow-sm lg:shadow-none border lg:border-none border-neutral-100">
+                    <div class="grid grid-cols-1 gap-6">
+                        <div class="space-y-2">
+                            <label class="text-xs uppercase tracking-widest text-neutral-500">Name</label>
+                            <input type="text" class="w-full border-b border-neutral-300 py-2 focus:outline-none focus:border-black transition-colors bg-transparent rounded-none appearance-none" placeholder="Jane Doe" />
+                        </div>
+                        <div class="space-y-2">
+                            <label class="text-xs uppercase tracking-widest text-neutral-500">Email</label>
+                            <input type="email" class="w-full border-b border-neutral-300 py-2 focus:outline-none focus:border-black transition-colors bg-transparent rounded-none appearance-none" placeholder="jane@example.com" />
+                        </div>
+                    </div>
+                    <div class="space-y-2">
+                        <label class="text-xs uppercase tracking-widest text-neutral-500">Message</label>
+                        <textarea rows="4" class="w-full border-b border-neutral-300 py-2 focus:outline-none focus:border-black transition-colors bg-transparent resize-none rounded-none appearance-none" placeholder="I am interested in..."></textarea>
+                    </div>
+                    <button class="px-8 py-4 bg-neutral-900 text-white uppercase tracking-widest text-xs hover:bg-neutral-800 transition-colors w-full lg:w-auto">
+                        Send Message
+                    </button>
+                </form>
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="py-12 border-t border-neutral-100 bg-white">
+        <div class="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center text-[10px] text-neutral-400 uppercase tracking-widest text-center md:text-left">
+            <p class="mb-4 md:mb-0">&copy; 2025 Austin Mandlokuwa Studio. All Rights Reserved.</p>
+            <div class="flex space-x-6">
+                <a href="#" class="hover:text-neutral-900">Privacy Policy</a>
+                <a href="#" class="hover:text-neutral-900">Terms of Use</a>
+            </div>
+        </div>
+    </footer>
+
+    <div id="lightbox" class="fixed inset-0 z-[70] bg-white hidden opacity-0 transition-opacity duration-300 overflow-y-auto">
+        <button onclick="closeModal()" class="fixed top-4 right-4 md:top-8 md:right-8 text-neutral-500 hover:text-black transition-colors z-[80] p-2 bg-white/50 backdrop-blur-md rounded-full">
+            <i class="ph ph-x text-2xl md:text-3xl"></i>
+        </button>
+
+        <div class="min-h-full flex items-center justify-center p-4 py-20 md:p-12">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 w-full max-w-7xl">
+                <div class="flex items-center justify-center bg-neutral-50 p-4 md:p-8">
+                    <img id="modalImage" src="" alt="" class="max-h-[60vh] lg:max-h-[85vh] w-auto shadow-sm object-contain">
+                </div>
+                
+                <div class="flex flex-col justify-center space-y-6">
+                    <div class="text-center lg:text-left">
+                        <h2 id="modalTitle" class="text-3xl md:text-5xl font-serif text-neutral-900 mb-2"></h2>
+                        <p id="modalYear" class="text-lg md:text-xl text-neutral-500 font-light italic"></p>
+                    </div>
+                    
+                    <div class="space-y-4 text-neutral-800 border-t border-b border-neutral-200 py-8 text-sm md:text-base">
+                        <div class="flex justify-between">
+                            <span class="font-medium text-neutral-500 uppercase tracking-wider text-xs">Medium</span>
+                            <span id="modalMedium" class="text-right"></span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="font-medium text-neutral-500 uppercase tracking-wider text-xs">Dimensions</span>
+                            <span id="modalSize" class="text-right"></span>
+                        </div>
+                    </div>
+                    
+                    <div class="pt-4 text-center lg:text-left">
+                        <p id="modalPrice" class="text-3xl md:text-4xl font-serif mb-8"></p>
+                        <button class="w-full py-4 bg-neutral-900 text-white uppercase tracking-widest hover:bg-neutral-700 transition-colors text-xs font-medium">
+                            Inquire to Purchase
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const artworks = [
+            { id: 1, title: "Dust & Gold I", category: "Painting", medium: "Oil on Canvas", year: "2024", size: "120 x 150cm", price: "R 85,000", image: "images/art7.jpg" },
+            { id: 2, title: "The Wait", category: "Charcoal", medium: "Charcoal on Cotton Paper", year: "2023", size: "80 x 110cm", price: "R 45,000", image: "images/art6.jpg" },
+            { id: 3, title: "Structure of Silence", category: "Sculpture", medium: "Bronze & Concrete", year: "2024", size: "40 x 40 x 60cm", price: "R 120,000", image: "images/art5.jpg" },
+            { id: 4, title: "Dust & Gold II", category: "Painting", medium: "Oil on Canvas", year: "2024", size: "120 x 150cm", price: "R 85,000", image: "images/art3.jpg" },
+            { id: 5, title: "Noon Shadows", category: "Painting", medium: "Mixed Media", year: "2023", size: "200 x 200cm", price: "Sold", image: "images/hero1.jpg" },
+            { id: 6, title: "Ancestral Echo", category: "Print", medium: "Silkscreen", year: "2022", size: "60 x 80cm", price: "R 12,000", image: "images/art2.jpg" },
+        ];
+
+        function showSection(sectionId) {
+            document.querySelectorAll('.section-content').forEach(el => {
+                el.classList.remove('active');
+                setTimeout(() => { if(!el.classList.contains('active')) el.style.display = 'none'; }, 400);
+            });
+            const target = document.getElementById(sectionId);
+            target.style.display = (sectionId === 'contact') ? 'flex' : 'block';
+            setTimeout(() => { target.classList.add('active'); }, 50);
+            updateNavbarStyle(sectionId);
+            window.scrollTo(0, 0);
+        }
+
+        function updateNavbarStyle(sectionId) {
+            const nav = document.getElementById('navbar');
+            if(sectionId === 'home') {
+                nav.classList.remove('bg-white/95', 'backdrop-blur-sm', 'shadow-sm');
+                nav.classList.add('bg-transparent');
+            } else {
+                nav.classList.add('bg-white/95', 'backdrop-blur-sm', 'shadow-sm');
+                nav.classList.remove('bg-transparent');
+            }
+        }
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            const icon = document.getElementById('menuIcon');
+            const nav = document.getElementById('navbar');
+
+            if (menu.style.opacity === '1') {
+                menu.style.opacity = '0';
+                menu.style.pointerEvents = 'none';
+                icon.classList.remove('ph-x');
+                icon.classList.add('ph-list');
+                if(document.getElementById('home').classList.contains('active') && window.scrollY < 50) {
+                    nav.classList.remove('bg-white');
+                    nav.classList.add('bg-transparent');
+                }
+                document.body.style.overflow = 'auto';
+            } else {
+                menu.style.opacity = '1';
+                menu.style.pointerEvents = 'auto';
+                icon.classList.remove('ph-list');
+                icon.classList.add('ph-x');
+                nav.classList.remove('bg-transparent');
+                nav.classList.add('bg-white');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function renderGallery(filter = 'All') {
+            const grid = document.getElementById('artworkGrid');
+            if(!grid) return;
+            grid.innerHTML = ''; 
+            const filtered = filter === 'All' ? artworks : artworks.filter(a => a.category === filter);
+            filtered.forEach(art => {
+                const item = document.createElement('div');
+                item.className = "masonry-item group cursor-pointer w-full inline-block mb-8 break-inside-avoid"; 
+                item.onclick = () => openModal(art);
+                item.innerHTML = `
+                    <div class="relative overflow-hidden bg-neutral-100 mb-4">
+                        <img src="${art.image}" alt="${art.title}" class="w-full h-auto transition-transform duration-700 group-hover:scale-105">
+                        <div class="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300"></div>
+                    </div>
+                    <div class="flex flex-col sm:flex-row sm:justify-between sm:items-baseline">
+                        <h3 class="text-lg font-serif text-neutral-900 leading-tight">${art.title}</h3>
+                        <p class="text-sm text-neutral-500 mt-1 sm:mt-0">${art.price}</p>
+                    </div>
+                    <p class="text-xs text-neutral-400 uppercase tracking-wide mt-1">${art.medium}</p>
+                `;
+                grid.appendChild(item);
+            });
+        }
+
+        function filterGallery(category, btn) {
+            document.querySelectorAll('.filter-btn').forEach(b => {
+                b.classList.remove('text-neutral-900', 'font-bold');
+                b.classList.add('text-neutral-400');
+            });
+            btn.classList.remove('text-neutral-400');
+            btn.classList.add('text-neutral-900', 'font-bold');
+            renderGallery(category);
+        }
+
+        function openModal(art) {
+            document.getElementById('modalImage').src = art.image;
+            document.getElementById('modalTitle').innerText = art.title;
+            document.getElementById('modalYear').innerText = art.year;
+            document.getElementById('modalMedium').innerText = art.medium;
+            document.getElementById('modalSize').innerText = art.size;
+            document.getElementById('modalPrice').innerText = art.price;
+            const modal = document.getElementById('lightbox');
+            modal.classList.remove('hidden');
+            setTimeout(() => { modal.classList.remove('opacity-0'); }, 10);
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('lightbox');
+            modal.classList.add('opacity-0');
+            setTimeout(() => { modal.classList.add('hidden'); }, 300);
+            document.body.style.overflow = 'auto';
+        }
+
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            const homeSection = document.getElementById('home');
+            const menuOpen = document.getElementById('mobileMenu').style.opacity === '1';
+            if (!menuOpen && homeSection.classList.contains('active')) {
+                if (window.scrollY > 50) {
+                    nav.classList.add('bg-white/95', 'backdrop-blur-sm', 'shadow-sm');
+                    nav.classList.remove('bg-transparent');
+                } else {
+                    nav.classList.remove('bg-white/95', 'backdrop-blur-sm', 'shadow-sm');
+                    nav.classList.add('bg-transparent');
+                }
+            }
+        });
+
+        // Initialize!
+        showSection('home');
+        renderGallery();
+    </script>
+</body>
+</html>
